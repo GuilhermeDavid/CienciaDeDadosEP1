@@ -7,7 +7,6 @@ def get_pokemon_data():
     response = requests.get(url)
     html_content = response.text
 
-    # Expressões regulares para capturar os dados
     pokemon_rows = re.findall(
         r'<tr>.*?data-sort-value="(\d+)".*?<a class="ent-name" href="(.*?)".*?>(.*?)</a>.*?type-icon type-(.*?)".*?<a class="type-icon type-(.*?)" href=".*?".*?<td class="cell-num cell-total">(\d+)</td>.*?<td class="cell-num">(\d+)</td>.*?<td class="cell-num">(\d+)</td>.*?<td class="cell-num">(\d+)</td>.*?<td class="cell-num">(\d+)</td>.*?<td class="cell-num">(\d+)</td>.*?<td class="cell-num">(\d+)</td>',
         html_content, re.DOTALL
@@ -33,9 +32,6 @@ def get_pokemon_data():
                 "speed": speed
             }
         }
-
-        # Aqui você pode adicionar mais lógica para extrair evoluções e habilidades
-        # acessando as URLs de cada Pokémon e coletando as informações adicionais
 
         pokemons.append(pokemon)
 
